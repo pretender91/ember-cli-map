@@ -4,13 +4,10 @@ import layout from '../templates/components/google-map-autocomplete';
 
 export default Ember.Component.extend({
   layout: layout,
-
-  address: Ember.computed.alias('model.address').readOnly(),
-  lat: Ember.computed.alias('model.lat').readOnly(),
-  long: Ember.computed.alias('model.long').readOnly(),
+  tagName:'input',
 
   initialize: Ember.on('didInsertElement', function() {
-    let inputElement = this.$('input')[0];
+    let inputElement = this.$()[0];
     let autocompleteField = new google.maps.places.Autocomplete(inputElement, {types: ['geocode']});
     autocompleteField.addListener('place_changed', ()=>{
       //HACK: context
