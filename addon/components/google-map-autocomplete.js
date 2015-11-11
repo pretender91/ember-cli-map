@@ -6,6 +6,10 @@ export default Ember.Component.extend({
   layout: layout,
   tagName:'input',
 
+  attributeBindings: ['type', 'autocomplete', 'placeholder:placeholder'],
+  type: "text",
+  autocomplete: "off",
+
   initialize: Ember.on('didInsertElement', function() {
     let inputElement = this.$()[0];
     let autocompleteField = new google.maps.places.Autocomplete(inputElement, {types: ['geocode']});
